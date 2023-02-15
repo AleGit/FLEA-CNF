@@ -1,4 +1,4 @@
-# Install tools and libraries for *FLEA-0*
+# Install tools and libraries for *FLEA*
 
 ## macOS (arm64, x86_64)
 
