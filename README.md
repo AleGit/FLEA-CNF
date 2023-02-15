@@ -4,25 +4,17 @@ Author: Alexander Maringele
 
 ## Installation
 
-*FLEA* is written in the Apple Swift programming language,
-uses two third party sat solver libraries
-and a parser library implemented in C by the author.
+*FLEA* is written in the Apple [Swift](https://swift.org) programming language.
+It relies heavily on the power of the sat and smt solver libraries 
+of [Yices2](https://yices.csl.sri.com) and [Z3](https://github.com/Z3Prover/z3)
+and uses a basic [parsing library](https://github.com/AleGit/CTptpParsing) implemented in C by the author.
 
-### Tools and Libraries
+### Required Tools and Libraries
 
-The following tools and libraries are used to maintain and build *FLEA*.
-
-- [Git](https://git-scm.com) 
-- [Clang](http://clang.llvm.org) compiler infrastructure
-- [Swift](https://swift.org) compiler frontend
-- [Yices2](https://yices.csl.sri.com) SAT and SMT Solver library
-- [Z3](https://github.com/Z3Prover/z3) SAT and SMT Solver library
-- [pkg-config](https://www.freedesktop.org/wiki/Software/pkg-config/) helper tool when buidling applications and libraries
-  
-You find detailed installation hints for tools and libraries
-in [Readme-macOS.md](Readme-macOS.md) 
-and [Readme-Ubuntu.md)[Readme-Ubuntu.md].
-Check if the tools are installed correctly, e.g. on macOS:
+You find detailed installation hints for required developer tools and libraries
+in [Readme-macOS.md](Readme-macOS.md) for macOS 
+and [Readme-Linux.md](Readme-Linux.md) for Ubuntu Linux.
+You can easily check if the tools and libraries are installed correctly, e.g. the minimal versions on macOS are as follows:
 
 ```zsh
 % git --version             # git version 2.37.1 (Apple Git-137.1)
@@ -41,14 +33,14 @@ We use this collection of first order problems for testing and experimenting wit
 
 - [The TPTP Library for Automated Theorem Proving](http://www.tptp.org)
 
-Download and unpack TPTP v8.0.0 or newer.
+Download (in your web-browser or with curl) and unpack TPTP v8.0.0 or newer.
 Rename the unpacked folder into your home directory.
 
 ```zsh
 % curl http://www.tptp.org/TPTP/Distribution/TPTP-v8.0.0.tgz --output TPTP-v8.0.0.tgz
-% tar -xf TPTP-v7.4.0.tgz
-% mv TPTP-v7.4.0 ~/TPTP
-% rm TPTP-v7.4.0.tgz
+% tar -xf TPTP-v8.0.0.tgz
+% mv TPTP-v8.0.0 ~/TPTP
+% rm TPTP-v8.0.0.tgz
 % ls ~/TPTP/
 Axioms          Documents       Generators      Problems        Scripts         TPTP2X
 ```
@@ -58,7 +50,7 @@ By default *FLEA* will search for files in the following order
 - `~/TPTP/Axioms` `~/Downloads/TPTP/Axioms` (`*.ax` axiom files)
 - `~/TPTP/Problems` `~/Downloads/TPTP/Problems` (`*.p` problem files)
 
-### Installation of a basic tptp parsing Library
+### The Basic TPTP Parsing Library 
 
 The simple [tptp parsing library](https://github.com/AleGit/CTptpParsing) 
 -- written in C with Bison and Flex and provided by the author of *FLEA* -- 
@@ -70,8 +62,8 @@ can be installed easily on macOS or Ubuntu.
 % sudo make install
 ```
 
-This will instal header and library files of the tptp parsing library.
-Additionally these three pkg-config files `Yices.pc`, `Z3Api.py`, and `TptpParsing.pc`
+This will install header files and library binaries of the tptp parsing library.
+Additionally three pkg-config files `Yices.pc`, `Z3Api.pc`, and `TptpParsing.pc`
 are copied into
 
 ```zsh
@@ -79,19 +71,8 @@ are copied into
 /usr/lib/pkgconfig          # Ubuntu Linux
 ```
 
-such that pkg-config should find these config files.
-
-### Check libraries
-
-- Check configuration
-
-```zsh
-% pkg-config Yices Z3Api TptpParsing --cflags --libs
-# macOS arm64
--I/opt/homebrew/include -I/usr/local/include -L/opt/homebrew/lib -L/usr/local/lib 
-# macOS 11 x86_64, Ubuntu Linux
--I/usr/local/include -L/usr/local/lib
-```
+such that [pkg-config](https://www.freedesktop.org/wiki/Software/pkg-config/) 
+can find these config files.
 
 - Expected configuration files
 
@@ -107,10 +88,20 @@ such that pkg-config should find these config files.
 /usr/lib/pkgconfig/TptpParsing.pc
 ```
 
+- Check the configuration
+
+```zsh
+% pkg-config Yices Z3Api TptpParsing --cflags --libs
+# macOS arm64
+-I/opt/homebrew/include -I/usr/local/include -L/opt/homebrew/lib -L/usr/local/lib 
+# macOS 11 x86_64, Ubuntu Linux
+-I/usr/local/include -L/usr/local/lib
+```
+
 The pkg-config must yield correct paths to header and library directories 
 of Yices2, Z3, and tptp parsing. 
 
-- Required header files
+- Required header files in `include` directory from configuration above
 
 ```zsh
 # Yices
@@ -142,7 +133,7 @@ PrlcCore.h
 PrlcParser.h
 ```
 
-- Required library files
+- Required library files in `lib` directory from configuration above 
 
 ```zsh
 # Yices 2
