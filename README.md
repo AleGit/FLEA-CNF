@@ -29,7 +29,7 @@ You can easily check if the tools and libraries are installed correctly, e.g. th
 
 ### Thousand Problems for Theorem Provers
 
-We use this collection of first order problems for testing and experimenting with *FLEA*.
+We use this collection of first order problems for testing, evaluating, and experimenting with *FLEA*.
 
 - [The TPTP Library for Automated Theorem Proving](http://www.tptp.org)
 
