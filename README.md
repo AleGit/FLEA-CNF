@@ -154,14 +154,80 @@ libTptpParsing.a               # TODO: Ubuntu Linux
 ### Download, run and test *FLEA*.
 
 ```zsh
-% git clone https://github.com/AleGit/FLEA5.git
-Cloning into FLEA5 ...
-% cd FLEA5
+% git clone https://github.com/AleGit/FLEA-CNF.git
+Cloning into FLEA-CNF ...
+% cd FLEA-CNF
 % git checkout develop
-% swift run
-FLEA - First order Logic with Equality Attester (FLEA)
-...
-% swift test
+% swift test | grep "failure"
 ...
 Executed ... tests, with 0 failures (0 unexpected) in ... (...) seconds.
+% swift run -c release Flea "PUZ001-1" -u "file;http"
+...
 ```
+
+### Basic Usage of *FLEA*
+
+We execute Flea on the commandline with `swift run -c release`
+followed by a list of problems (paths or names) and a list of optional options.
+
+```bnf
+swift run -c release Flea <arguments>
+
+<arguments> ::= <problems> | <problems> <options>
+<problems>  ::= <problem> | <problem> <problems>
+<problem>   ::= <filepath> | <problemname>
+<options>   ::= <option> | <option> <options>
+
+<option>    ::= <tptp_base> | <config> | <smt_solver> | <uri_scheme>
+<option>    ::= | <runtime> | <verbose> | <help>
+
+<tptp_base> ::= --tptp_base <dirpaths>
+<config>    ::= --config <filepath>
+<smt_solver>::= --smt_solver <solver>
+<uri_scheme>::= --uri_scheme <schemes>
+<runtime>   ::= --runtime <integer>
+<verbose>   ::= --verbose <bool>
+<info>      ::= --info <topics>
+
+<dirpaths>  ::= <dirpath> | <dirpath> <dirpaths>
+<dirpath>   ::= 'path/to/directory'
+<filepath>  ::= 'path/to/file'
+<schemes>   ::= <scheme> | <scheme> <scheme>
+<scheme>    ::= 'file' | 'http'
+<solver>    ::= 'Yices' | 'Z3'
+<topics>    ::= <topic> | <topic> <topics>
+<topics>    ::= header | options | shorts | variables 
+```
+
+All options can be set multiple times but for most options
+(e.g. config, smt_solver, runtime, verbose), only the first value will be used.
+
+We can set environment variables, e.g.
+
+```bash
+% export TPTP_BASE="$HOME/FLEA/TPTP;$HOME/UIBK/TPTP"
+% export FLEA_CONFIG="$HOME/FLEA/verbose.logging"
+% export FLEA_SMT_SOLVER='Yices'
+% export FLEA_URI_SCHEME='file;http'
+```
+
+- tptp base directory - multiple directories paths with fallbacks
+
+  Flea will use the first valid tptp directory from options, environment, defaults.
+
+- config logging file - single path with default
+
+  By default `./Config/Flea.logging`
+  or `./Config/Flea.debug.logging` are used.
+
+- smt solver - first or default solver
+
+  By default Z3 is used.
+
+- uri scheme - file or http
+
+  - By default problem and axiom files are searched locally.
+  - If only `http` is configured, 
+    then files are searched remotely.
+  - If `file` and `http` are configured, files
+    are searched locally and if not found searched remotely.
