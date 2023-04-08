@@ -2,6 +2,18 @@
 
 Author: Alexander Maringele
 
+## Introduction
+
+*FLEA* is a prototype of an automated instantiation-based theorem prover for first-order logic.
+It reads problem files in conjunctive normal from the [tptp.org](http:/www.tptp.org) platform.
+It tries to generate a unsatisfiable set of ground instances from first-order clauses utilizing
+SMT solvers for selecting literals and checking satisfiability of derived sets of instances.
+
+To build or run *FLEA*, several developer tools and libraries need to be installed.
+In any case, the [Yices2](https://yices.csl.sri.com) SMT solver library,
+the [Z3](https://github.com/z3prover) SMT library,
+and a small [tptp parser](https://github.com/AleGit/CTptpParsing) library must be installed.
+
 ## Installation
 
 *FLEA* is written in the Apple [Swift](https://swift.org) programming language.
@@ -11,17 +23,18 @@ and uses a basic [parsing library](https://github.com/AleGit/CTptpParsing) imple
 
 ### Required Tools and Libraries
 
-You find detailed installation hints for required developer tools and libraries
+You find detailed installation hints for the required developer tools and libraries
 in [Readme-macOS.md](Readme-macOS.md) for macOS 
 and [Readme-Linux.md](Readme-Linux.md) for Ubuntu Linux.
-You can easily check if the tools and libraries are installed correctly, e.g. the minimal versions on macOS are as follows:
+You can easily check if the required tools and libraries are installed correctly, 
+e.g. the recommended versions on macOS are as follows:
 
 ```zsh
 % git --version             # git version 2.37.1 (Apple Git-137.1)
 % clang --version           # Apple clang version 14.0.0 (clang-1400.0.29.202)
-% swift --version           # swift-driver version: 1.62.15 Apple Swift version 5.7.2 (swiftlang-5.7.2.135.5 clang-1400.0.29.51)
+% swift --version           # swift-driver version: 1.75.2 Apple Swift version 5.8
 % yices --verison           # Yices 2.6.4
-% z3 --version              # Z3 version 4.11.2 - 64 bit
+% z3 --version              # Z3 version 4.12.1 - 64 bit
 % pkg-config --version      # 0.29.2
 % flex --version            # flex 2.6.4 Apple(flex-34)
 % bison --version           # bison (GNU Bison) 2.3
@@ -67,8 +80,8 @@ Additionally three pkg-config files `Yices.pc`, `Z3Api.pc`, and `TptpParsing.pc`
 are copied into
 
 ```zsh
-/usr/local/lib/pkgconfig    # macOS 11 (arm64,x86_64)
-/usr/lib/pkgconfig          # Ubuntu Linux
+/usr/local/lib/pkgconfig    # macOS 13 (arm64,x86_64)
+/usr/lib/pkgconfig          # Ubuntu Linux (TODO: check this)
 ```
 
 such that [pkg-config](https://www.freedesktop.org/wiki/Software/pkg-config/) 
