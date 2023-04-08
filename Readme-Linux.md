@@ -67,6 +67,7 @@ $ sudo apt-get install clang make bison flex
 $ sudo add-apt-repository ppa:sri-csl/formal-methods
 $ sudo apt-get update
 $ sudo apt-get install yices2
+$ sudo apt-get install yices2-dev
 
 $ yices --version
 Yices 2.6.4
@@ -79,15 +80,49 @@ Platform: x86_64-linux-gnu (release)
 $ which yices
 /usr/bin/yices
 
+$ find /usr -iname "*yices*"
+/usr/include/yices.h
+/usr/include/yices_limits.h
+/usr/include/yices_types.h
+/usr/include/yices_exit_codes.h
 
-$ git clone https://github.com/Z3Prover/z3.git
-$ cd z3
-$ python3 scripts/mk_make.py
-$ cd build
-$ make
-$ sudo make install
+/usr/bin/yices-smt
+/usr/bin/yices-sat
+/usr/bin/yices-smt2
+/usr/bin/yices
 
-$ z3 --version
+/usr/lib/x86_64-linux-gnu/libyices.so.2.6
+/usr/lib/x86_64-linux-gnu/libyices.so.2.6.4
+/usr/lib/x86_64-linux-gnu/libyices.so
 
-$ which z3
+
+
+$ sudo apt-get install libz3-dev
+
+$ $ z3 --version
+Z3 version 4.8.12 - 64 bit
+alexander@ThinkPad-X240:~/z3/build$ which z3
+/usr/bin/z3
+alexander@ThinkPad-X240:~/z3/build$ find /usr/ -iname "*z3*"
+
+/usr/include/z3_fixedpoint.h
+/usr/include/z3_spacer.h
+/usr/include/z3_rcf.h
+/usr/include/z3_macros.h
+/usr/include/z3_algebraic.h
+/usr/include/z3_fpa.h
+/usr/include/z3_v1.h
+/usr/include/z3_api.h
+/usr/include/z3.h
+/usr/include/z3_optimization.h
+/usr/include/z3++.h
+/usr/include/z3_version.h
+/usr/include/z3_polynomial.h
+/usr/include/z3_ast_containers.h
+
+/usr/bin/z3
+
+/usr/lib/x86_64-linux-gnu/libz3.so.4
+/usr/lib/x86_64-linux-gnu/libz3.so
+/usr/lib/x86_64-linux-gnu/pkgconfig/z3.pc
 ```
