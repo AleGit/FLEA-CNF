@@ -60,7 +60,7 @@ $ sudo apt-get install \
 $ sudo apt-get install clang make bison flex
 ```
 
-### Install smt and parser libraries
+### Install smt libraries
 
 
 ```bash
@@ -75,4 +75,16 @@ Linked with GMP 6.2.1
 Copyright Free Software Foundation, Inc.
 Build date: 2021-12-20
 Platform: x86_64-linux-gnu (release)
+
+
+$ git clone https://github.com/Z3Prover/z3.git
+$ cd z3
+$ python3 scripts/mk_make.py
+$ cd build
+$ make
+$ sudo make install
+
+$ z3 --version
+
+$ which z3
 ```
