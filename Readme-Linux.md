@@ -39,7 +39,7 @@
 Please notice that the to be installe developer tools differs slightly differren distributions of Linux. 
 
 ```bash 
-% sudo apt-get install \
+$ sudo apt-get install \
     binutils \
     git \
     gnupg2 \
@@ -57,14 +57,22 @@ Please notice that the to be installe developer tools differs slightly differren
     unzip \
     zlib1g-dev
   
-% sudo apt-get install clang make bison flex
+$ sudo apt-get install clang make bison flex
 ```
 
 ### Install smt and parser libraries
 
 
 ```bash
-% sudo add-apt-repository ppa:sri-csl/formal-methods
-% sudo apt-get update
-& sudo apt-get install yices2
+$ sudo add-apt-repository ppa:sri-csl/formal-methods
+$ sudo apt-get update
+$ sudo apt-get install yices2
+
+$ yices --version
+Yices 2.6.4
+Copyright SRI International.
+Linked with GMP 6.2.1
+Copyright Free Software Foundation, Inc.
+Build date: 2021-12-20
+Platform: x86_64-linux-gnu (release)
 ```
