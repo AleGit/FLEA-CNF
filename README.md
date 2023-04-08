@@ -178,16 +178,17 @@ swift run -c release Flea <arguments>
 <problem>   ::= <filepath> | <problemname>
 <options>   ::= <option> | <option> <options>
 
-<option>    ::= <tptp_base> | <config> | <smt_solver> | <uri_scheme>
-<option>    ::= | <runtime> | <verbose> | <help>
+<option>    ::= <tptp_base> | <smt_solver> | <uri_scheme>
+<option>    ::= <runtime> | <config> | <verbose> | <help>
 
-<tptp_base> ::= --tptp_base <dirpaths>
+<tptp_base> ::= --base <dirpaths>
 <config>    ::= --config <filepath>
 <smt_solver>::= --smt_solver <solver>
-<uri_scheme>::= --uri_scheme <schemes>
-<runtime>   ::= --runtime <integer>
-<verbose>   ::= --verbose <bool>
-<info>      ::= --info <topics>
+<uri_scheme>::= --uri_schemes <schemes>
+<runtime>   ::= --time_imit <integer>
+<verbose>   ::= --verbose
+<info>      ::= --info_topics <topics>
+<help>      ::= --help
 
 <dirpaths>  ::= <dirpath> | <dirpath> <dirpaths>
 <dirpath>   ::= 'path/to/directory'
@@ -196,11 +197,12 @@ swift run -c release Flea <arguments>
 <scheme>    ::= 'file' | 'http'
 <solver>    ::= 'Yices' | 'Z3'
 <topics>    ::= <topic> | <topic> <topics>
-<topics>    ::= header | options | shorts | variables 
+<topics>    ::= header | options | shorts | variables | topics 
 ```
 
-All options can be set multiple times but for most options
-(e.g. config, smt_solver, runtime, verbose), only the first value will be used.
+Values for options can be set multiple times but for
+config, smt_solver, runtime only the first value will be used.
+Values for verbose and help will be ignored.
 
 We can set environment variables, e.g.
 
@@ -208,7 +210,9 @@ We can set environment variables, e.g.
 % export TPTP_BASE="$HOME/FLEA/TPTP;$HOME/UIBK/TPTP"
 % export FLEA_CONFIG="$HOME/FLEA/verbose.logging"
 % export FLEA_SMT_SOLVER='Yices'
-% export FLEA_URI_SCHEME='file;http'
+% export FLEA_URI_SCHEMES='file;http'
+% export FLEA_TIME_LIMIT='600'
+% export FLEA_INFO_TOPICS='headers;options'
 ```
 
 - tptp base directory - multiple directories paths with fallbacks
