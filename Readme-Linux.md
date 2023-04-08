@@ -34,6 +34,10 @@
   
 ## Example
 
+### Install developer tools
+
+Please notice that the to be installe developer tools differs slightly differren distributions of Linux. 
+
 ```bash 
 % sudo apt-get install \
     binutils \
@@ -54,4 +58,13 @@
     zlib1g-dev
   
 % sudo apt-get install clang make bison flex
+```
+
+### Install smt and parser libraries
+
+
+```bash
+% sudo add-apt-repository ppa:sri-csl/formal-methods
+% sudo apt-get update
+& sudo apt-get install yices2
 ```
