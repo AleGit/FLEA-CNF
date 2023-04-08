@@ -76,6 +76,9 @@ Copyright Free Software Foundation, Inc.
 Build date: 2021-12-20
 Platform: x86_64-linux-gnu (release)
 
+$ which yices
+/usr/bin/yices
+
 
 $ git clone https://github.com/Z3Prover/z3.git
 $ cd z3
