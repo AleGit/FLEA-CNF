@@ -1,61 +1,33 @@
 # Install tools and libraries for *FLEA*
 
-## Linux (Ubuntu 20.04 LTS, x86_64)
+## Linux (Ubuntu 22.04 and others)
 
-* Install a of list development tools 
+* Download an [Apple Swift](https://swift.org/download/) release binary for your platform.
 
-```bash
-$ apt-get install \
-          binutils \
-          git \
-          gnupg2 \
-          libc6-dev \
-          libcurl4 \
-          libedit2 \
-          libgcc-9-dev \
-          libpython2.7 \
-          libsqlite3-0 \
-          libstdc++-9-dev \
-          libxml2 \
-          libz3-dev \
-          pkg-config \
-          tzdata \
-          uuid-dev \
-          zlib1g-dev
-```
-as listed under https://www.swift.org/getting-started/#installing-swift
+* Install the required dependencies for Swift and the Swift binary on your platform
+  as listed on [swift.org](https://www.swift.org/download/#linux).
 
-* Install [Apple Swift](https://swift.org/download/ )
+* Install the tools to build and install the parsing library
 
-Follow the instructions on https://www.swift.org/download/#using-downloads 
-(scroll down to Linux below Apple Platforms)
-and do not forget to put the swift directory into the path variable.
-
-```bash
-$ swift --version
-Swift version 5.3.2 (swift-5.3.2-RELEASE)
-Target: x86_64-unkonwn-linux.gnu
-```
-
-* Install additonal tools to build the parsing library
-```
-% apt-get install clang make bison flex
-```
+  ```bash
+  % apt-get install clang make bison flex
+  ```
 
 * Install [Yices 2](http://yices.csl.sri.com)
 
-```bash
-% sudo add-apt-repository ppa:sri-csl/formal-methods
-% sudo apt-get update
-% sudo apt-get install yices2
-% yices --version
-```
+  ```bash
+  % sudo add-apt-repository ppa:sri-csl/formal-methods
+  % sudo apt-get update
+  % sudo apt-get install yices2
+  % yices --version
+  ```
 
+* Install [Z3](https://github.com/Z3Prover/z3/wiki), i.e.
 
-* Install [Z3](https://github.com/Z3Prover/z3/wiki), i.e. build from source or download and install binaries
+  * either build it from the [source code](https://github.com/Z3Prover/z3),
 
-  - [Source Code](https://github.com/Z3Prover/z3)
+  * or install one the [release binaries](https://github.com/Z3Prover/z3/releases).
 
-  - [Releases](https://github.com/Z3Prover/z3/releases)
-
-
+  ```bash
+  % Z3 --version
+  ```

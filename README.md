@@ -58,10 +58,10 @@ Rename the unpacked folder into your home directory.
 Axioms          Documents       Generators      Problems        Scripts         TPTP2X
 ```
 
-By default *FLEA* will search for files in the following order
+By default *FLEA* will search for problem and axiom files in the following directories:
 
-- `~/TPTP/Axioms` `~/Downloads/TPTP/Axioms` (`*.ax` axiom files)
-- `~/TPTP/Problems` `~/Downloads/TPTP/Problems` (`*.p` problem files)
+- `~/TPTP/Problems` or `~/Downloads/TPTP/Problems` (`*.p` problem files)
+- `~/TPTP/Axioms` or `~/Downloads/TPTP/Axioms` (`*.ax` axiom files)
 
 ### The Basic TPTP Parsing Library 
 
@@ -174,7 +174,7 @@ Cloning into FLEA-CNF ...
 % swift test | grep "failure"
 ...
 Executed ... tests, with 0 failures (0 unexpected) in ... (...) seconds.
-% swift run -c release Flea "PUZ001-1" -u "file;http"
+% swift run -c release Flea "HWV001-1" -u "file;http"
 ...
 ```
 
@@ -248,3 +248,11 @@ We can set environment variables, e.g.
     then files are searched remotely.
   - If `file` and `http` are configured, files
     are searched locally and if not found searched remotely.
+
+## Summary
+
+When all tools and libraries are installed, we change into the Source Code Directory an execute the following command to solve a problem.
+
+```bash
+FLEA-CNF % swift run -c release Flea HWV001-1
+```
