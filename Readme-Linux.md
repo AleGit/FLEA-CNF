@@ -5,38 +5,37 @@
 * Download an [Apple Swift](https://swift.org/download/) release binary for your platform.
 
 * Install the required dependencies for Swift and the Swift binary on your platform
-  as listed on [swift.org](https://www.swift.org/download/#linux).
+  as listed on [swift.org Linux](https://www.swift.org/download/#linux).
 
 * Install the tools to build and install the parsing library
 
   ```bash
-  % sudo apt-get install clang make bison flex
+  $ sudo apt-get install clang make bison flex
   ```
 
-* Install [Yices 2](http://yices.csl.sri.com)
+* Install [Yices 2](http://yices.csl.sri.com) headers and library
 
   ```bash
-  % sudo add-apt-repository ppa:sri-csl/formal-methods
-  % sudo apt-get update
-  % sudo apt-get install yices2
-  % yices --version
+  $ sudo add-apt-repository ppa:sri-csl/formal-methods
+  $ sudo apt-get update
+  $ sudo apt-get install yices2-dev
+  $ yices --version
   ```
 
-* Install [Z3](https://github.com/Z3Prover/z3/wiki), i.e.
+* Install [Z3](https://github.com/Z3Prover/z3/wiki) headers and library
 
-  * either build it from the [source code](https://github.com/Z3Prover/z3),
-
-  * or install one the [release binaries](https://github.com/Z3Prover/z3/releases).
+  May already been installed with the developer tools.
 
   ```bash
-  % Z3 --version
+  $ sudo apt-get install z3lib-dev
+  $ Z3 --version
   ```
   
 ## Example
 
 ### Install developer tools
 
-Please notice that the to be installe developer tools differs slightly differren distributions of Linux. 
+Please notice that the list of developer tools may differ slightly between different Linux distributions. 
 
 ```bash 
 $ sudo apt-get install \
@@ -58,29 +57,41 @@ $ sudo apt-get install \
     zlib1g-dev
   
 $ sudo apt-get install clang make bison flex
+
+$ pkg-config --version
+0.29.2
+
+$ clang --versionUbuntu clang version 14.0.0-1ubuntu1
+Target: x86_64-pc-linux-gnu
+Thread model: posix
+InstalledDir: /usr/bin
+
+$ make --versionGNU Make 4.3
+GNU Make 4.3
+
+$ bison --version
+bison (GNU Bison) 3.8.2
+
+$ flex --version
+flex 2.6.4
+
 ```
 
-### Install smt libraries
+### Install smt headers and libraries
 
 
 ```bash
 $ sudo add-apt-repository ppa:sri-csl/formal-methods
 $ sudo apt-get update
-$ sudo apt-get install yices2
 $ sudo apt-get install yices2-dev
 
 $ yices --version
 Yices 2.6.4
-Copyright SRI International.
-Linked with GMP 6.2.1
-Copyright Free Software Foundation, Inc.
-Build date: 2021-12-20
-Platform: x86_64-linux-gnu (release)
 
 $ which yices
 /usr/bin/yices
 
-$ find /usr -iname "*yices*"
+$ find /usr -iname "*yices*" -ls
 /usr/include/yices.h
 /usr/include/yices_limits.h
 /usr/include/yices_types.h
@@ -95,33 +106,11 @@ $ find /usr -iname "*yices*"
 /usr/lib/x86_64-linux-gnu/libyices.so.2.6.4
 /usr/lib/x86_64-linux-gnu/libyices.so
 
-
-
 $ sudo apt-get install libz3-dev
 
-$ $ z3 --version
-Z3 version 4.8.12 - 64 bit
-alexander@ThinkPad-X240:~/z3/build$ which z3
-/usr/bin/z3
-alexander@ThinkPad-X240:~/z3/build$ find /usr/ -iname "*z3*"
-
-/usr/include/z3_fixedpoint.h
-/usr/include/z3_spacer.h
-/usr/include/z3_rcf.h
-/usr/include/z3_macros.h
-/usr/include/z3_algebraic.h
-/usr/include/z3_fpa.h
-/usr/include/z3_v1.h
+$ find /usr/ -iname "*z3*"
 /usr/include/z3_api.h
-/usr/include/z3.h
-/usr/include/z3_optimization.h
-/usr/include/z3++.h
-/usr/include/z3_version.h
-/usr/include/z3_polynomial.h
-/usr/include/z3_ast_containers.h
-
 /usr/bin/z3
-
 /usr/lib/x86_64-linux-gnu/libz3.so.4
 /usr/lib/x86_64-linux-gnu/libz3.so
 /usr/lib/x86_64-linux-gnu/pkgconfig/z3.pc
