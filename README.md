@@ -254,5 +254,5 @@ We can set environment variables, e.g.
 When all tools and libraries are installed, we change into the Source Code Directory an execute the following command to solve a problem.
 
 ```bash
-FLEA-CNF % swift run -c release Flea HWV001-1
+FLEA-CNF % swift run -c release Flea PUZ001-1
 ```
