@@ -1,0 +1,32 @@
+{
+  "pins" : [
+    {
+      "identity" : "ctptpparsing",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/AleGit/CTptpParsing.git",
+      "state" : {
+        "branch" : "develop",
+        "revision" : "dc4b193587024e073921f6b4bf5ac1a5b4ac005c"
+      }
+    },
+    {
+      "identity" : "cyices",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/AleGit/CYices.git",
+      "state" : {
+        "branch" : "develop",
+        "revision" : "340afed328dfeea8a545c38fd1e899590dd7b417"
+      }
+    },
+    {
+      "identity" : "cz3api",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/AleGit/CZ3API.git",
+      "state" : {
+        "branch" : "develop",
+        "revision" : "3109c2f1b655843b1a4d1e423b07939ebc664159"
+      }
+    }
+  ],
+  "version" : 2
+}

@@ -1,0 +1,15 @@
+# debug configuration for tests
+
+# emergency < alert < critical < error < warning < notice < info < debug
+# for details see Project/Configs.
+
+"---" :: "error"   # global minimum log priority
+"***" :: "info"    # global default log priority
+"+++" :: "debug"   # global maximal log priority
+
+"SyslogTests.swift" :: "info"
+"SyslogTests.swift/testError()" :: "error"
+"SyslogTests.swift/testWarning()" :: "warning"
+
+
+

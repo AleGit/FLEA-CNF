@@ -1,0 +1,13 @@
+# Debug logging configuration
+
+# emergency < alert < critical < error < warning < notice < info < debug
+# for details see Project/Configs/default.logging.
+
+"---"                   :: "error"      # minimal log level, i.e. log everything up to error
+"***"                   :: "notice"     # error < notice < debug
+"+++"                   :: "debug"      # maximal log level
+
+"main.swift"            :: "debug"      # log level for file 'main.swift'
+# "FilePath.swift/isAccessible"  :: "debug"       # log level for 'isAccessible' in file 'FilePath.swift'
+# "Tptp.File.swift" :: "debug"
+

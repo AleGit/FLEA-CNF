@@ -1,0 +1,30 @@
+# Default logging configuration
+
+# FLEA's logging system wraps [syslog](https://en.wikipedia.org/wiki/Syslog)
+#
+# log levels: 1...8
+# emergency < alert < critical < error < warning < notice < info < debug
+
+# The lower the set log level, the less is logged. 
+# The higher the set log level the more is logged.
+
+# a minimal, default, and maximal log level can be configured
+#
+# - `minimal ≤ default ≤ maximal` is recommended.
+# - `error ≤ minimum` is recommended - emergency, alert, critical, error should be reported.
+# - `maximal < notice` is recommended for release builds
+
+"---"                        :: "error"     # minimal log level
+"***"                        :: "warning"   # default log level: min(max(error,warning),notice) = warning
+"+++"                        :: "notice"    # maximal log level
+
+# minimal log level - error: everything smaller MUST BE logged (emergency, alert, critical, error)
+# maximal log level - notice: everything higher MUST NOT BE be logged (info, debug)
+#
+# default log level - warning: the maximal log level for unspecified files or functions priorities
+
+"String+Path.swift"   :: "debug"   # file specific log level: min(max(error,debug),notice) = notice
+"Demo.swift"          :: "alert"   # file specific log level: min(max(error,alert),notice) = error
+"Node.swift/init"     :: "info"    # file/function log level: min(max(error,info ),notice) = notice
+
+

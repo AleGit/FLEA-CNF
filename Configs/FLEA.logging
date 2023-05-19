@@ -1,0 +1,8 @@
+# Release logging configuration
+
+# emergency < alert < critical < error < warning < notice < info < debug
+# for details see Project/Configs/default.logging.
+
+"---"                   :: "error"      # minimal log level, i.e. log everything up to error
+"***"                   :: "warning"    # error < warning < notice
+"+++"                   :: "notice"     # maximal log level, i.e. log nothing above info
